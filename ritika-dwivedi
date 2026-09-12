@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ritika Dwivedi | Customer Success Leader</title>
+<meta name="description" content="Customer Success Leader with 7 years of experience across B2B SaaS, cybersecurity, data backup, AI, customer retention, product adoption, and enterprise growth.">
+<meta name="theme-color" content="#f7f6f2">
+<meta property="og:title" content="Ritika Dwivedi | Customer Success Leader">
+<meta property="og:description" content="Customer Success, Account Management, B2B SaaS, Cybersecurity and AI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ritika-dwivedi-customer-success-leader-portfolio.ai.studio/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://ritika-dwivedi-customer-success-leader-portfolio.ai.studio/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#fff; --ink:#111318; --muted:#62666f; --line:#deded8;
+  --accent:#3157d5; --accent-soft:#e9edff; --nav:rgba(247,246,242,.82);
+  --shadow:0 24px 70px rgba(17,19,24,.08); --radius:24px; --max:1180px;
+}
+[data-theme="dark"]{
+  --bg:#0d0f13; --surface:#15181e; --ink:#f4f4f0; --muted:#a6aab3; --line:#292d35;
+  --accent:#7890ff; --accent-soft:#1b2444; --nav:rgba(13,15,19,.82);
+  --shadow:0 24px 70px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+::selection{background:var(--accent);color:#fff}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+.nav{position:fixed;z-index:50;top:0;left:0;right:0;border-bottom:1px solid transparent;background:transparent;transition:.3s}
+.nav.scrolled{background:var(--nav);border-color:var(--line);backdrop-filter:blur(18px)}
+.nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.04em}
+.nav-links{display:none;gap:24px;align-items:center;font-size:13px;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.icon-btn,.menu-btn{width:40px;height:40px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.menu-btn{border-radius:12px}
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 80px;position:relative}
+.hero:before{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,var(--accent-soft),transparent 68%);right:-220px;top:130px;pointer-events:none}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.hero h1{font:800 clamp(3.2rem,8vw,7.4rem)/.96 Manrope,sans-serif;letter-spacing:-.075em;max-width:1000px;margin:0 0 30px}
+.hero h1 span{color:var(--accent)}
+.lead{font-size:clamp(1.05rem,2vw,1.3rem);color:var(--muted);max-width:690px;margin:0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin:34px 0 56px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 19px;border:1px solid var(--line);border-radius:12px;font-weight:700;font-size:14px;transition:.25s}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.08)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.metric{padding:22px 18px 22px 0}
+.metric:nth-child(odd){border-right:1px solid var(--line)}
+.metric:nth-child(n+3){border-top:1px solid var(--line)}
+.metric strong{display:block;font:800 clamp(2rem,5vw,3.3rem)/1 Manrope,sans-serif;letter-spacing:-.06em}
+.metric span{display:block;margin-top:8px;color:var(--muted);font-size:13px}
+.scroll{display:none}
+.section{padding:110px 0}
+.section.alt{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:54px}
+.kicker{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:700}
+.section h2{font:800 clamp(2.5rem,6vw,5rem)/1 Manrope,sans-serif;letter-spacing:-.065em;margin:0;max-width:800px}
+.editorial{font-size:clamp(1.35rem,3vw,2.2rem);line-height:1.35;letter-spacing:-.03em;max-width:950px}
+.editorial b{font-weight:700}
+.impact-grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.impact{background:var(--surface);padding:30px;min-height:230px;display:flex;flex-direction:column;justify-content:space-between}
+.impact .num{font:800 clamp(2.5rem,5vw,4.5rem)/1 Manrope,sans-serif;letter-spacing:-.07em}
+.impact h3{margin:18px 0 6px;font-size:18px}
+.impact p{margin:0;color:var(--muted);font-size:14px;max-width:460px}
+.pillars{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+.pillar{background:var(--surface);padding:28px;min-height:170px;transition:.25s}
+.pillar:hover{transform:translateY(-5px);background:var(--accent);color:#fff}
+.pillar:hover p,.pillar:hover .index{color:rgba(255,255,255,.72)}
+.pillar .index{font-size:12px;color:var(--accent);font-weight:700}
+.pillar h3{font:700 1.55rem Manrope,sans-serif;margin:34px 0 8px}
+.pillar p{font-size:14px;color:var(--muted);margin:0}
+.timeline{position:relative;border-left:1px solid var(--line);margin-left:8px}
+.role{position:relative;padding:0 0 62px 34px}
+.role:before{content:"";position:absolute;left:-5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 7px var(--bg)}
+.role-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.company{font:700 1.35rem Manrope,sans-serif}
+.date{font-size:12px;color:var(--muted);padding-top:5px}
+.role h4{font-size:15px;margin:7px 0 14px;color:var(--accent)}
+.role p{font-size:14px;color:var(--muted);max-width:720px;margin:0}
+.story-grid{display:grid;gap:20px}
+.story{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow);transition:.3s}
+.story:hover{transform:translateY(-5px)}
+.story .label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.story h3{font:700 clamp(1.7rem,4vw,2.5rem)/1.1 Manrope,sans-serif;letter-spacing:-.04em;margin:20px 0 28px}
+.story dl{margin:0;display:grid;grid-template-columns:100px 1fr;gap:13px;font-size:14px}
+.story dt{color:var(--muted);font-weight:600}
+.story dd{margin:0}
+.outcome{margin-top:28px;padding-top:22px;border-top:1px solid var(--line)}
+.outcome strong{font-size:20px;color:var(--accent)}
+.leadership{display:grid;gap:24px}
+.lead-copy{font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.35;letter-spacing:-.03em}
+.cap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.cap{background:var(--surface);padding:22px;font-weight:700}
+.cap small{display:block;color:var(--muted);font-weight:400;margin-top:6px}
+.flow{display:grid;gap:0;border:1px solid var(--line)}
+.flow-step{position:relative;padding:24px 22px;background:var(--surface);border-bottom:1px solid var(--line)}
+.flow-step:last-child{border-bottom:0}
+.flow-step:not(:last-child):after{content:"↓";position:absolute;right:22px;bottom:-17px;z-index:2;width:32px;height:32px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:var(--bg);color:var(--accent)}
+.flow-step .n{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:.12em}
+.flow-step strong{display:block;font:700 1.4rem Manrope,sans-serif;margin:5px 0}
+.flow-step span{font-size:13px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{padding:11px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:13px}
+.recognition{display:grid;gap:18px}
+.award{border-top:1px solid var(--line);padding-top:24px;display:flex;gap:18px;align-items:flex-start}
+.award-num{font:800 2rem/1 Manrope,sans-serif;color:var(--accent)}
+.award strong{display:block;font-size:17px}.award p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.edu-grid{display:grid;gap:16px}
+.edu{padding:26px;background:var(--surface);border:1px solid var(--line)}
+.edu small{color:var(--accent);font-weight:700}.edu h3{margin:8px 0 4px;font:700 1.2rem Manrope,sans-serif}.edu p{margin:0;color:var(--muted);font-size:14px}
+.contact{padding:120px 0 90px;text-align:center}
+.contact h2{margin:0 auto 22px;font:800 clamp(2.8rem,7vw,6.8rem)/.98 Manrope,sans-serif;letter-spacing:-.07em;max-width:1000px}
+.contact p{max-width:600px;margin:0 auto;color:var(--muted)}
+.contact .ctas{justify-content:center}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-links{display:flex;gap:18px}.footer-links a:hover{color:var(--ink)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+.mobile-menu{display:none;position:fixed;z-index:40;top:78px;left:20px;right:20px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:var(--shadow)}
+.mobile-menu.open{display:block}.mobile-menu a{display:block;padding:13px;border-radius:10px}.mobile-menu a:hover{background:var(--accent-soft)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(min-width:720px){
+ .container{width:min(calc(100% - 64px),var(--max))}
+ .nav-links{display:flex}.menu-btn{display:none}
+ .metrics{grid-template-columns:repeat(4,1fr)}.metric{padding:25px 22px}.metric:nth-child(odd){border-right:0}.metric:not(:last-child){border-right:1px solid var(--line)}.metric:nth-child(n+3){border-top:0}
+ .impact-grid{grid-template-columns:repeat(2,1fr)}.pillars{grid-template-columns:repeat(5,1fr)}
+ .story-grid{grid-template-columns:repeat(3,1fr)}.leadership{grid-template-columns:1fr 1.1fr}
+ .flow{grid-template-columns:repeat(6,1fr)}.flow-step{border-bottom:0;border-right:1px solid var(--line);min-height:190px}.flow-step:last-child{border-right:0}.flow-step:not(:last-child):after{content:"→";right:-17px;bottom:auto;top:50%;transform:translateY(-50%)}
+ .edu-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:1000px){
+ .hero{padding-top:160px}.hero h1{max-width:1050px}.scroll{display:block;position:absolute;bottom:34px;right:0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl}
+ .impact-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="Ritika Dwivedi home">Ritika Dwivedi</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#about">About</a><a href="#impact">Impact</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button>
+      <button class="menu-btn" id="menu" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+  <a href="#about">About</a><a href="#impact">Impact</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#education">Education</a><a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow reveal">Customer Success · Account Management · B2B SaaS · AI · Cybersecurity</div>
+    <h1 class="reveal">Turning customer relationships into <span>long-term revenue.</span></h1>
+    <p class="lead reveal">Customer Success leader with 7 years of experience across B2B SaaS, cybersecurity, data backup, AI, and enterprise technology.</p>
+    <div class="ctas reveal"><a class="btn primary" href="#impact">View My Impact ↓</a><a class="btn" href="#contact">Let's Connect</a></div>
+    <div class="metrics reveal" aria-label="Career highlights">
+      <div class="metric"><strong>7+</strong><span>Years Experience</span></div>
+      <div class="metric"><strong>4,000+</strong><span>Accounts Managed</span></div>
+      <div class="metric"><strong>$44M</strong><span>ARR Portfolio</span></div>
+      <div class="metric"><strong>80%</strong><span>Increase in Product Adoption</span></div>
+    </div>
+    <div class="scroll">Scroll to explore ↓</div>
+  </div>
+</section>
+
+<section class="section alt" id="about">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">01 · Positioning</div><h2>Customer Success, built for scale.</h2></div>
+  <p class="editorial reveal">Ritika works at the intersection of <b>customer, business, product, and technology</b>, translating enterprise relationships into retention, adoption, expansion, advocacy, and operational scale.</p>
+</div>
+</section>
+
+<section class="section" id="impact">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">02 · Proof</div><h2>Impact, measured.</h2></div>
+  <div class="impact-grid">
+    <article class="impact reveal"><div class="num">$44M</div><div><h3>ARR portfolio</h3><p>Managed a global portfolio of 4,000+ accounts representing $44M ARR.</p></div></article>
+    <article class="impact reveal"><div class="num">80%</div><div><h3>Increase in adoption</h3><p>Automation-led engagement strategies and client webinars drove an 80% increase in product adoption globally.</p></div></article>
+    <article class="impact reveal"><div class="num">45d → 1w</div><div><h3>Onboarding cycle</h3><p>Redesigned implementation processes and removed delivery bottlenecks to reduce onboarding time from 45 days to one week.</p></div></article>
+    <article class="impact reveal"><div class="num">100%</div><div><h3>Enterprise retention</h3><p>Maintained 100% client retention across a high-touch enterprise portfolio.</p></div></article>
+    <article class="impact reveal"><div class="num">9/10</div><div><h3>CSAT</h3><p>Maintained consistently high customer satisfaction through proactive stakeholder communication.</p></div></article>
+    <article class="impact reveal"><div class="num">8</div><div><h3>CSMs led</h3><p>Led a team of 8 CSMs while defining KPIs, building SOPs, supporting hiring, and mentoring the team.</p></div></article>
+  </div>
+</div>
+</section>
+
+<section class="section alt">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">03 · Value creation</div><h2>How I create value.</h2></div>
+  <div class="pillars">
+    <article class="pillar reveal"><div class="index">01</div><h3>Retention</h3><p>Proactive customer strategy, stakeholder alignment, and escalation management.</p></article>
+    <article class="pillar reveal"><div class="index">02</div><h3>Adoption</h3><p>Structured engagement, automation, and customer education to deepen product value.</p></article>
+    <article class="pillar reveal"><div class="index">03</div><h3>Expansion</h3><p>Retention planning and account strategy that create organic upsell and cross-sell opportunities.</p></article>
+    <article class="pillar reveal"><div class="index">04</div><h3>Advocacy</h3><p>Customer feedback and relationships that strengthen the voice of the customer.</p></article>
+    <article class="pillar reveal"><div class="index">05</div><h3>Operational Scale</h3><p>Process architecture, SOPs, implementation improvements, and team development.</p></article>
+  </div>
+</div>
+</section>
+
+<section class="section" id="experience">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">04 · Career journey</div><h2>Chapters of customer-led growth.</h2></div>
+  <div class="timeline">
+    <article class="role reveal"><div class="role-top"><div><div class="company">Druva Software</div><h4>Senior Customer Success Manager</h4></div><div class="date">June 2024 – Present</div></div><p>Customer Success leadership across a global B2B SaaS environment, with focus on enterprise relationships, retention, adoption, expansion, and customer outcomes.</p></article>
+    <article class="role reveal"><div class="role-top"><div><div class="company">Druva Software</div><h4>Technical Customer Success Manager</h4></div><div class="date">June 2024 – May 2026</div></div><p>Technical customer success across enterprise technology, helping customers adopt solutions while coordinating across customer, product, and engineering stakeholders.</p></article>
+    <article class="role reveal"><div class="role-top"><div><div class="company">Morningstar India</div><h4>Implementation Consultant</h4></div><div class="date">September 2023 – June 2024</div></div><p>Implementation ownership with focus on requirement gathering, data migration, delivery coordination, and removing onboarding bottlenecks.</p></article>
+    <article class="role reveal"><div class="role-top"><div><div class="company">Staqu Technologies</div><h4>Manager of Customer Success</h4></div><div class="date">January 2023 – August 2023</div></div><p>Customer Success management with customer delight, team development, account relationships, and operational execution.</p></article>
+    <article class="role reveal"><div class="role-top"><div><div class="company">IDC</div><h4>Associate Customer Success Manager</h4></div><div class="date">June 2020 – January 2023</div></div><p>Customer Success experience spanning customer relationships, engagement, retention, and technology-led customer outcomes.</p></article>
+    <article class="role reveal"><div class="role-top"><div><div class="company">Evertech Engineers</div><h4>Application Engineer</h4></div><div class="date">May 2019 – March 2020</div></div><p>Application engineering experience that built an early technical foundation for a career at the intersection of customers and technology.</p></article>
+  </div>
+</div>
+</section>
+
+<section class="section alt">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">05 · Selected impact stories</div><h2>Three moments that show the operating model.</h2></div>
+  <div class="story-grid">
+    <article class="story reveal"><div class="label">Impact Story 01</div><h3>Scaling Customer Adoption</h3><dl><dt>Context</dt><dd>Global customer portfolio</dd><dt>Challenge</dt><dd>Increasing product adoption at scale</dd><dt>Approach</dt><dd>Automation-led engagement, client webinars, and structured customer engagement</dd></dl><div class="outcome"><strong>80% increase in product adoption globally</strong></div></article>
+    <article class="story reveal"><div class="label">Impact Story 02</div><h3>From 45 Days to 1 Week</h3><dl><dt>Context</dt><dd>B2B implementation</dd><dt>Challenge</dt><dd>Long onboarding cycle</dd><dt>Approach</dt><dd>Identified delivery bottlenecks, redesigned implementation frameworks, and improved requirement gathering and data migration</dd></dl><div class="outcome"><strong>Onboarding reduced from 45 days to 1 week</strong></div></article>
+    <article class="story reveal"><div class="label">Impact Story 03</div><h3>Protecting Enterprise Revenue</h3><dl><dt>Context</dt><dd>High-touch enterprise portfolio</dd><dt>Challenge</dt><dd>Retention and account expansion</dd><dt>Approach</dt><dd>Retention planning, EBRs, solution audits, escalation management, and cross-functional collaboration</dd></dl><div class="outcome"><strong>100% client retention and organic upsell/cross-sell opportunities</strong></div></article>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">06 · Leadership</div><h2>Leadership beyond the account.</h2></div>
+  <div class="leadership">
+    <p class="lead-copy reveal">Customer Success leadership means building the system around the relationship, not just managing the relationship itself.</p>
+    <div class="cap-grid">
+      <div class="cap reveal">Team Development<small>Led, mentored, onboarded, and supported CSMs.</small></div>
+      <div class="cap reveal">Cross-functional Leadership<small>Partnered with Product and Engineering.</small></div>
+      <div class="cap reveal">Process Architecture<small>Defined KPIs and built SOPs.</small></div>
+      <div class="cap reveal">Escalation Management<small>Managed critical customer escalations.</small></div>
+      <div class="cap reveal">Voice of Customer<small>Influenced product roadmaps through customer feedback.</small></div>
+      <div class="cap reveal">Customer Strategy<small>Connected retention, adoption, and expansion.</small></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section alt">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">07 · Operating system</div><h2>A customer journey designed to compound.</h2></div>
+  <div class="flow">
+    <div class="flow-step reveal"><div class="n">01</div><strong>DISCOVER</strong><span>Understand customer context, needs, and goals.</span></div>
+    <div class="flow-step reveal"><div class="n">02</div><strong>ADOPT</strong><span>Turn implementation into meaningful product value.</span></div>
+    <div class="flow-step reveal"><div class="n">03</div><strong>ENGAGE</strong><span>Create structured, proactive customer touchpoints.</span></div>
+    <div class="flow-step reveal"><div class="n">04</div><strong>RETAIN</strong><span>Protect outcomes, relationships, and recurring revenue.</span></div>
+    <div class="flow-step reveal"><div class="n">05</div><strong>EXPAND</strong><span>Identify organic upsell and cross-sell opportunities.</span></div>
+    <div class="flow-step reveal"><div class="n">06</div><strong>ADVOCATE</strong><span>Turn customer insight into stronger products and relationships.</span></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="expertise">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">08 · Expertise</div><h2>The disciplines behind the work.</h2></div>
+  <div class="tags reveal">
+    <span class="tag">Customer Success</span><span class="tag">Account Management</span><span class="tag">Customer Retention</span><span class="tag">Product Adoption</span><span class="tag">Revenue Expansion</span><span class="tag">Upsell / Cross-sell</span><span class="tag">Enterprise Accounts</span><span class="tag">Customer Operations</span><span class="tag">Implementation</span><span class="tag">Voice of Customer</span><span class="tag">Cross-functional Collaboration</span><span class="tag">Escalation Management</span><span class="tag">AI / Technology</span><span class="tag">Cybersecurity</span><span class="tag">Data Backup</span>
+  </div>
+</div>
+</section>
+
+<section class="section alt">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">09 · Recognition</div><h2>Recognition earned along the way.</h2></div>
+  <div class="recognition">
+    <div class="award reveal"><div class="award-num">01</div><div><strong>Multiple Star Quarter Awards</strong><p>Recognized multiple times over the last 2 years.</p></div></div>
+    <div class="award reveal"><div class="award-num">02</div><div><strong>Customer Delight Award</strong><p>Received within the first 6 months at Staqu Technologies.</p></div></div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="education">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">10 · Education & certifications</div><h2>Continuous learning, grounded in technology.</h2></div>
+  <div class="edu-grid">
+    <article class="edu reveal"><small>2015 – 2019</small><h3>Dr. A.P.J. Abdul Kalam Technical University</h3><p>B.Tech, Electrical and Electronics Engineering</p></article>
+    <article class="edu reveal"><small>July 2025 – July 2027</small><h3>Symbiosis School for Online & Digital Learning</h3><p>MBA, Digital</p></article>
+    <article class="edu reveal"><small>Certification</small><h3>Scrum: The Basics</h3><p>Professional development in Scrum fundamentals.</p></article>
+    <article class="edu reveal"><small>Certification</small><h3>Onboarding and Adoption Best Practices for Customer Success Management</h3><p>Professional development focused on customer onboarding and adoption.</p></article>
+  </div>
+</div>
+</section>
+
+<section class="section alt">
+<div class="container">
+  <div class="section-head reveal"><div class="kicker">11 · About</div><h2>Customer. Business. Product. Technology.</h2></div>
+  <p class="editorial reveal">Ritika's experience spans <b>B2B SaaS, cybersecurity, data backup, AI, research, marketing, and Customer Success</b>. That range enables her to connect technical context with customer outcomes, business value, and the operating disciplines required to scale enterprise relationships.</p>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="container">
+  <div class="kicker reveal">12 · Contact</div>
+  <h2 class="reveal">Let's build customer relationships that compound.</h2>
+  <p class="reveal">For conversations around Customer Success leadership, enterprise growth, customer strategy, and scaling high-performing teams.</p>
+  <div class="ctas reveal">
+    <a class="btn primary" href="https://www.linkedin.com/in/ritika-dwivedi-22b618255" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+    <a class="btn" href="mailto:rtkdwvd@gmail.com">Email Ritika</a>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer-inner">
+  <div><strong style="color:var(--ink)">Ritika Dwivedi</strong> · Customer Success Leader</div>
+  <div class="footer-links"><a href="https://www.linkedin.com/in/ritika-dwivedi-22b618255" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:rtkdwvd@gmail.com">Email</a><a href="#top" id="toplink">Back to top ↑</a></div>
+</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+const theme=document.getElementById('theme');
+const menu=document.getElementById('menu');
+const mobile=document.getElementById('mobileMenu');
+
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+
+const saved=localStorage.getItem('ritika-theme');
+if(saved) document.documentElement.dataset.theme=saved;
+theme.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=next;
+  localStorage.setItem('ritika-theme',next);
+});
+
+menu.addEventListener('click',()=>{
+  const open=mobile.classList.toggle('open');
+  menu.setAttribute('aria-expanded',open);
+});
+mobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  mobile.classList.remove('open'); menu.setAttribute('aria-expanded','false');
+}));
+
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduced){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+</script>
+</body>
+</html>
