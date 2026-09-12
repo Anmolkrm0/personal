@@ -1,264 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anmol Kumar - AI Product Manager</title>
-    <style>
-        :root {
-            --bg-color: #f5f5f7;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --link-color: #0071e3;
-            --card-bg: #ffffff;
-            --border-radius: 18px;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 40px;
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-        }
-
-        h1 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -0.003em;
-            margin: 0 0 10px 0;
-        }
-
-        .subtitle {
-            font-size: 19px;
-            font-weight: 400;
-            color: var(--text-secondary);
-            margin: 0 0 20px 0;
-        }
-
-        .contact-info {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .contact-info a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        section {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            margin: 0 0 20px 0;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #d2d2d7;
-        }
-
-        p {
-            font-size: 17px;
-            font-weight: 400;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        ul li {
-            font-size: 17px;
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        ul li::before {
-            content: "•";
-            color: var(--text-secondary);
-            position: absolute;
-            left: 0;
-        }
-
-        .job-title {
-            font-size: 19px;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        .company-meta {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-        }
-
-        .job-block {
-            margin-bottom: 30px;
-        }
-
-        .job-block:last-child {
-            margin-bottom: 0;
-        }
-
-        .pill-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .pill {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px auto;
-            }
-            header, section {
-                padding: 24px;
-            }
-            h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Anmol Kumar — AI Product Manager focused on GenAI, LLMs, RAG, AI strategy and enterprise AI products." />
+  <title>Anmol Kumar | AI Product Manager</title>
+  <style>
+    :root{
+      --bg:#071018;
+      --bg2:#0b1722;
+      --card:rgba(18,31,43,.72);
+      --card2:rgba(22,39,54,.9);
+      --text:#f4f7fb;
+      --muted:#9eabb8;
+      --line:rgba(255,255,255,.09);
+      --accent:#39d98a;
+      --accent2:#54a8ff;
+      --max:1180px;
+      --radius:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(57,217,138,.12), transparent 28%),
+        radial-gradient(circle at 12% 28%, rgba(84,168,255,.10), transparent 30%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      background:rgba(7,16,24,.72);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid transparent;
+      transition:.25s;
+    }
+    .nav.scrolled{border-bottom-color:var(--line);background:rgba(7,16,24,.9)}
+    .nav-inner{height:74px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:800;letter-spacing:-.04em;font-size:20px}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:28px;color:#bdc7d1;font-size:14px}
+    .nav-links a:hover{color:#fff}
+    .nav-cta{
+      padding:10px 16px;border:1px solid rgba(57,217,138,.35);
+      border-radius:999px;color:#dffced;background:rgba(57,217,138,.08);
+      font-size:13px;font-weight:700;
+    }
+    .hero{min-height:760px;display:flex;align-items:center;padding:130px 0 90px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:70px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;
+      background:rgba(57,217,138,.08);border:1px solid rgba(57,217,138,.2);
+      color:#b9f7d7;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+      margin-bottom:22px;
+    }
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+    h1{font-size:clamp(48px,7vw,86px);line-height:.96;letter-spacing:-.065em;max-width:820px}
+    .gradient{
+      background:linear-gradient(110deg,#fff 10%,#b9f7d7 48%,#6eb8ff 90%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero-copy{margin-top:25px;max-width:690px;color:#b2bec9;font-size:18px}
+    .hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:13px;font-weight:750;font-size:14px;transition:.2s}
+    .btn-primary{background:#fff;color:#071018}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(255,255,255,.12)}
+    .btn-secondary{border:1px solid var(--line);background:rgba(255,255,255,.03);color:#d9e1e8}
+    .btn-secondary:hover{background:rgba(255,255,255,.07)}
+    .hero-meta{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap}
+    .meta strong{display:block;font-size:25px;letter-spacing:-.04em}
+    .meta span{color:var(--muted);font-size:12px}
+    .orb-wrap{display:flex;justify-content:center}
+    .orb{
+      width:min(360px,70vw);aspect-ratio:1;border-radius:50%;position:relative;
+      background:
+        radial-gradient(circle at 35% 30%,rgba(255,255,255,.24),transparent 10%),
+        radial-gradient(circle at 50% 50%,rgba(57,217,138,.22),transparent 42%),
+        radial-gradient(circle at 50% 50%,rgba(84,168,255,.14),transparent 68%);
+      border:1px solid rgba(255,255,255,.11);
+      box-shadow:0 0 100px rgba(57,217,138,.09),inset 0 0 80px rgba(84,168,255,.08);
+      animation:float 7s ease-in-out infinite;
+    }
+    .orb:before,.orb:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.13);border-radius:50%;inset:13%;transform:rotate(28deg) scaleY(.48)}
+    .orb:after{inset:27%;transform:rotate(-35deg) scaleY(.52)}
+    .orb-core{position:absolute;inset:38%;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));filter:blur(1px);box-shadow:0 0 55px rgba(57,217,138,.35)}
+    @keyframes float{50%{transform:translateY(-12px) rotate(2deg)}}
+    section{padding:100px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}
+    .kicker{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:800}
+    h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-.05em;margin-top:8px}
+    .section-intro{max-width:440px;color:var(--muted);font-size:14px}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .glass{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+    .about-text{font-size:17px;color:#c2ccd5}
+    .about-text p+p{margin-top:17px}
+    .focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .focus{
+      padding:17px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);
+      font-size:13px;color:#d5dee6
+    }
+    .focus b{display:block;color:#fff;margin-bottom:5px}
+    .skills{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{padding:10px 13px;border-radius:999px;background:rgba(84,168,255,.08);border:1px solid rgba(84,168,255,.18);font-size:13px;color:#cfe4fa}
+    .timeline{position:relative;margin-top:20px}
+    .timeline:before{content:"";position:absolute;left:9px;top:5px;bottom:5px;width:1px;background:linear-gradient(var(--accent),rgba(255,255,255,.05))}
+    .role{position:relative;padding-left:48px;margin-bottom:42px}
+    .role:last-child{margin-bottom:0}
+    .role-dot{position:absolute;left:3px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 15px rgba(57,217,138,.25)}
+    .role-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .role h3{font-size:21px;letter-spacing:-.025em}
+    .company{color:#c9d3dc;margin-top:2px;font-weight:650}
+    .date{color:var(--muted);font-size:12px;white-space:nowrap;padding-top:5px}
+    .role-location{color:#738291;font-size:12px;margin-top:3px}
+    .role-desc{color:#aebbc7;font-size:14px;max-width:820px;margin-top:14px}
+    .bullets{display:grid;gap:8px;margin-top:13px;color:#b8c4ce;font-size:14px}
+    .bullets li{list-style:none;padding-left:18px;position:relative}
+    .bullets li:before{content:"";position:absolute;left:0;top:.65em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    .experience-card{padding:36px;background:linear-gradient(135deg,rgba(57,217,138,.055),rgba(84,168,255,.035));border:1px solid var(--line);border-radius:28px}
+    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .project{
+      min-height:240px;padding:28px;border-radius:22px;border:1px solid var(--line);
+      background:linear-gradient(145deg,rgba(18,31,43,.95),rgba(10,21,31,.9));
+      position:relative;overflow:hidden;
+    }
+    .project:after{content:"";position:absolute;width:160px;height:160px;border-radius:50%;right:-80px;top:-80px;background:rgba(57,217,138,.08);filter:blur(2px)}
+    .project-num{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:.1em}
+    .project h3{font-size:25px;letter-spacing:-.04em;margin:30px 0 10px}
+    .project p{font-size:14px;color:var(--muted);max-width:470px}
+    .project-tag{display:inline-block;margin-top:22px;font-size:11px;color:#bcd0df;padding:6px 9px;border-radius:8px;background:rgba(255,255,255,.05)}
+    .edu{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center}
+    .degree{font-size:20px;font-weight:700}
+    .school{color:#c1ccd6;margin-top:5px}
+    .years{font-size:12px;color:var(--muted)}
+    .certs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:18px}
+    .cert{padding:16px 18px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.025);font-size:13px;color:#c9d4dd}
+    .contact{
+      padding:65px 0 90px;text-align:center;
+      background:radial-gradient(circle at center,rgba(57,217,138,.08),transparent 42%);
+    }
+    .contact h2{max-width:720px;margin:8px auto 15px}
+    .contact p{color:var(--muted);max-width:600px;margin:auto}
+    .contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+    footer{border-top:1px solid var(--line);padding:24px 0;color:#687786;font-size:12px}
+    footer .container{display:flex;justify-content:space-between;gap:20px}
+    .reveal{opacity:0;transform:translateY(20px);transition:.7s ease}
+    .reveal.show{opacity:1;transform:none}
+    @media(max-width:850px){
+      .nav-links{display:none}
+      .hero{min-height:auto;padding-top:120px}
+      .hero-grid,.about-grid,.project-grid{grid-template-columns:1fr}
+      .orb-wrap{order:-1;justify-content:flex-start}
+      .orb{width:210px}
+      .section-head{display:block}
+      .section-intro{margin-top:15px}
+    }
+    @media(max-width:600px){
+      .container{width:min(var(--max),calc(100% - 28px))}
+      section{padding:75px 0}
+      h1{font-size:50px}
+      .hero-copy{font-size:16px}
+      .hero-meta{gap:18px}
+      .glass,.experience-card{padding:22px}
+      .role-top{display:block}
+      .date{margin-top:5px}
+      .focus-grid,.certs{grid-template-columns:1fr}
+      .edu{grid-template-columns:1fr}
+      footer .container{display:block}
+      footer span{display:block;margin-top:7px}
+    }
+  </style>
 </head>
 <body>
-
-    <div class="container">
-        <!-- Header Section -->
-        <header>
-            <h1>Anmol Kumar[cite: 1]</h1>
-            <p class="subtitle">AI Product Manager | GenAI | LLMs | RAG | Product Strategy | AI Analytics | Enterprise AI Products | Ex-QA Lead[cite: 1]</p>
-            <div class="contact-info">
-                Gurugram, Haryana, India[cite: 1]<br>
-                <a href="mailto:anmolkumar434@gmail.com">anmolkumar434@gmail.com[cite: 1]</a> • 
-                <a href="https://www.linkedin.com/in/anmolkrm1" target="_blank">LinkedIn Profile[cite: 1]</a>
-            </div>
-        </header>
-
-        <!-- Summary Section -->
-        <section>
-            <h2>Summary</h2>
-            <p>I am an AI-focused Product Manager with 6+ years of experience building data-driven platforms across AI, analytics, and investigation systems.[cite: 1] My journey started in Quality Assurance, where I developed a strong foundation in system thinking, product reliability, and user workflows before transitioning into Product Management.[cite: 1]</p>
-            <p>Currently, I work on AI-powered platforms that analyze large volumes of data and video intelligence to generate actionable insights for retail analytics and investigation workflows.[cite: 1] I collaborate closely with engineering, AI teams, and stakeholders to translate complex problems into scalable product solutions.[cite: 1]</p>
-            <p>My goal is to continue building scalable AI products that solve complex problems and deliver meaningful value to users.[cite: 1]</p>
-            
-            <h3 style="margin-top:24px; font-size:17px;">Key Areas:</h3>
-            <ul>
-                <li>AI-driven product development (LLM & Computer Vision based systems)[cite: 1]</li>
-                <li>Product strategy and roadmap planning[cite: 1]</li>
-                <li>Data-heavy platforms and intelligent search systems[cite: 1]</li>
-                <li>User workflow design for investigation and analytics tools[cite: 1]</li>
-                <li>Cross-functional execution with engineering and AI teams[cite: 1]</li>
-                <li>Agile product development and release management[cite: 1]</li>
-            </ul>
-        </section>
-
-        <!-- Skills & Certifications Section -->
-        <section>
-            <h2>Skills & Certifications</h2>
-            <h3 style="font-size:17px; margin-bottom: 12px;">Top Skills</h3>
-            <div class="pill-container" style="margin-bottom: 24px;">
-                <div class="pill">Retrieval-Augmented Generation (RAG)[cite: 1]</div>
-                <div class="pill">AI Product Strategy[cite: 1]</div>
-                <div class="pill">Prompt Engineering[cite: 1]</div>
-            </div>
-
-            <h3 style="font-size:17px; margin-bottom: 12px;">Certifications</h3>
-            <ul>
-                <li>Agile Software Development: Scrum for Developers[cite: 1]</li>
-                <li>Inclusive Leadership[cite: 1]</li>
-                <li>JMeter: Performance and Load Testing[cite: 1]</li>
-                <li>Test Automation Foundations[cite: 1]</li>
-                <li>Learning Selenium[cite: 1]</li>
-            </ul>
-        </section>
-
-        <!-- Experience Section -->
-        <section>
-            <h2>Experience</h2>
-            
-            <div class="job-block">
-                <p class="job-title">Staqu Technologies[cite: 1]</p>
-                
-                <div style="margin-top: 15px;">
-                    <p style="font-weight: 500; margin-bottom: 4px;">Assistant Product Manager[cite: 1]</p>
-                    <div class="company-meta">February 2024 - Present | Gurugram[cite: 1]</div>
-                    <ul>
-                        <li>Defined product roadmap, PRDs, user stories, and feature prioritization.[cite: 1]</li>
-                        <li>Led sprint planning, stakeholder management, and product releases.[cite: 1]</li>
-                        <li>Built AI-powered Retail Monitoring and Cybercrime Investigation platforms.[cite: 1]</li>
-                        <li>Worked with LLMs, RAG, Prompt Engineering, and AI workflows to deliver intelligent search, case insights, and AI-assisted investigation features.[cite: 1]</li>
-                    </ul>
-                </div>
-
-                <div style="margin-top: 20px;">
-                    <p style="font-weight: 500; margin-bottom: 4px;">QA Lead[cite: 1]</p>
-                    <div class="company-meta">February 2023 - Present | Gurugram, Haryana, India[cite: 1]</div>
-                    <p style="font-size: 15px;">Successfully led and managed QA teams while demonstrating proficiency in devising and implementing testing strategies.[cite: 1]</p>
-                </div>
-
-                <div style="margin-top: 20px;">
-                    <p style="font-weight: 500; margin-bottom: 4px;">Sr. QA Engineer[cite: 1]</p>
-                    <div class="company-meta">February 2022 - February 2023 | Gurugram, Haryana, India[cite: 1]</div>
-                </div>
-            </div>
-
-            <div class="job-block">
-                <p class="job-title">Softogrid Solutions Private Limited[cite: 1]</p>
-                <div style="margin-top: 5px;">
-                    <p style="font-weight: 500; margin-bottom: 4px;">QA Engineer[cite: 1]</p>
-                    <div class="company-meta">January 2019 - February 2022 | Noida, Uttar Pradesh, India[cite: 1]</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section>
-            <h2>Education</h2>
-            <div class="job-block">
-                <p class="job-title">CCS (Chaudhary Charan Singh) University[cite: 1]</p>
-                <div class="company-meta">Bachelor of Technology - BTech, Information Technology[cite: 1]<br>August 2015 - July 2019[cite: 1]</div>
-            </div>
-        </section>
-
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#top">AK<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">AI Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="mailto:anmolkumar434@gmail.com">Let's connect</a>
     </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> AI Product Manager · Gurugram</div>
+          <h1>Building AI products that turn <span class="gradient">complex data into action.</span></h1>
+          <p class="hero-copy">
+            AI-focused Product Manager with 6+ years of experience across AI, analytics and investigation systems,
+            combining product strategy with a strong QA foundation.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#experience">Explore my experience</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/anmolkrm1" target="_blank" rel="noopener">View LinkedIn ↗</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta"><strong>6+</strong><span>Years in technology</span></div>
+            <div class="meta"><strong>3+</strong><span>Years in Product</span></div>
+            <div class="meta"><strong>AI</strong><span>LLMs · RAG · Computer Vision</span></div>
+          </div>
+        </div>
+        <div class="orb-wrap reveal">
+          <div class="orb"><div class="orb-core"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">01 / Profile</div><h2>Product thinking,<br>with an AI edge.</h2></div>
+          <p class="section-intro">A blend of product execution, AI workflows, data-heavy systems and quality engineering.</p>
+        </div>
+        <div class="about-grid">
+          <div class="glass about-text reveal">
+            <p>My journey started in Quality Assurance, where I developed a strong foundation in system thinking, product reliability and user workflows before transitioning into Product Management.</p>
+            <p>Today, I work on AI-powered platforms that analyze large volumes of data and video intelligence to generate actionable insights for retail analytics and investigation workflows.</p>
+            <p>I collaborate closely with engineering, AI/ML, design and business teams to translate complex problems into scalable product solutions.</p>
+          </div>
+          <div class="glass reveal">
+            <div class="kicker">What I work on</div>
+            <div class="focus-grid" style="margin-top:18px">
+              <div class="focus"><b>AI Product Development</b>LLM & Computer Vision systems</div>
+              <div class="focus"><b>Product Strategy</b>Roadmaps, PRDs & prioritization</div>
+              <div class="focus"><b>Intelligent Search</b>Data-heavy platforms & RAG</div>
+              <div class="focus"><b>Investigation UX</b>Workflows for analytics & cases</div>
+              <div class="focus"><b>Cross-functional Delivery</b>Engineering & AI collaboration</div>
+              <div class="focus"><b>Quality at Scale</b>Edge cases, evaluation & reliability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">02 / Experience</div><h2>From quality<br>to product leadership.</h2></div>
+          <p class="section-intro">A career built around understanding how software works, how users work with it, and how to make both better.</p>
+        </div>
+        <div class="experience-card reveal">
+          <div class="timeline">
+            <article class="role">
+              <span class="role-dot"></span>
+              <div class="role-top">
+                <div>
+                  <h3>Assistant Product Manager</h3>
+                  <div class="company">Staqu Technologies</div>
+                  <div class="role-location">Gurugram</div>
+                </div>
+                <div class="date">Feb 2024 – Present</div>
+              </div>
+              <p class="role-desc">Leading AI-powered products from discovery to launch, collaborating with engineering, AI/ML, design and business teams.</p>
+              <ul class="bullets">
+                <li>Defined product roadmaps, PRDs, user stories and feature prioritization.</li>
+                <li>Led sprint planning, stakeholder management and product releases.</li>
+                <li>Defined KPIs, tracked product performance and drove continuous improvements.</li>
+                <li>Built AI-powered Retail Monitoring and Cybercrime Investigation platforms.</li>
+                <li>Worked with LLMs, RAG, Prompt Engineering and AI workflows for intelligent search, case insights and AI-assisted investigation.</li>
+                <li>Defined AI evaluation metrics, validated AI outputs and optimized UX using feedback and analytics.</li>
+              </ul>
+            </article>
+
+            <article class="role">
+              <span class="role-dot"></span>
+              <div class="role-top">
+                <div>
+                  <h3>QA Lead</h3>
+                  <div class="company">Staqu Technologies</div>
+                  <div class="role-location">Gurugram, Haryana, India</div>
+                </div>
+                <div class="date">Feb 2023 – Present</div>
+              </div>
+              <p class="role-desc">Led QA teams and testing strategies with a focus on high-quality software, user requirements, cross-functional collaboration and timely delivery.</p>
+            </article>
+
+            <article class="role">
+              <span class="role-dot"></span>
+              <div class="role-top">
+                <div>
+                  <h3>Sr. QA Engineer</h3>
+                  <div class="company">Staqu Technologies</div>
+                  <div class="role-location">Gurugram, Haryana, India</div>
+                </div>
+                <div class="date">Feb 2022 – Feb 2023</div>
+              </div>
+            </article>
+
+            <article class="role">
+              <span class="role-dot"></span>
+              <div class="role-top">
+                <div>
+                  <h3>QA Engineer</h3>
+                  <div class="company">Softogrid Solutions Private Limited</div>
+                  <div class="role-location">Noida, Uttar Pradesh, India</div>
+                </div>
+                <div class="date">Jan 2019 – Feb 2022</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">03 / AI Work</div><h2>Where AI meets<br>real-world impact.</h2></div>
+          <p class="section-intro">Building systems that help teams find information faster, investigate intelligently and make better decisions.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project reveal">
+            <div class="project-num">01 · RETAIL</div>
+            <h3>AI Retail Monitoring</h3>
+            <p>AI-powered retail monitoring designed to analyze large volumes of data and video intelligence and surface actionable insights.</p>
+            <span class="project-tag">Computer Vision · Analytics</span>
+          </article>
+          <article class="project reveal">
+            <div class="project-num">02 · INVESTIGATION</div>
+            <h3>Cybercrime Investigation</h3>
+            <p>Investigation workflows using intelligent search, case insights and AI-assisted features to help users work through complex information.</p>
+            <span class="project-tag">LLMs · RAG · AI Workflows</span>
+          </article>
+          <article class="project reveal">
+            <div class="project-num">03 · AI QUALITY</div>
+            <h3>AI Evaluation</h3>
+            <p>Defined evaluation metrics, validated AI outputs and worked with AI/ML teams to improve model performance, prompt quality and response accuracy.</p>
+            <span class="project-tag">Evaluation · Prompt Engineering</span>
+          </article>
+          <article class="project reveal">
+            <div class="project-num">04 · PRODUCT</div>
+            <h3>From Discovery to Launch</h3>
+            <p>Product ownership across roadmaps, PRDs, user stories, prioritization, sprint planning, releases, KPIs and continuous improvement.</p>
+            <span class="project-tag">Strategy · Execution · UX</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">04 / Toolkit</div><h2>Skills & certifications.</h2></div>
+        </div>
+        <div class="glass reveal">
+          <div class="kicker">Top skills</div>
+          <div class="skills" style="margin-top:18px">
+            <span class="chip">Retrieval-Augmented Generation (RAG)</span>
+            <span class="chip">AI Product Strategy</span>
+            <span class="chip">Prompt Engineering</span>
+            <span class="chip">LLMs</span>
+            <span class="chip">AI Analytics</span>
+            <span class="chip">Enterprise AI Products</span>
+            <span class="chip">Product Roadmapping</span>
+            <span class="chip">User Workflow Design</span>
+            <span class="chip">Agile Product Development</span>
+            <span class="chip">AI Evaluation</span>
+          </div>
+          <div class="kicker" style="margin-top:35px">Certifications</div>
+          <div class="certs">
+            <div class="cert">Agile Software Development: Scrum for Developers</div>
+            <div class="cert">Inclusive Leadership</div>
+            <div class="cert">JMeter: Performance and Load Testing</div>
+            <div class="cert">Test Automation Foundations</div>
+            <div class="cert">Learning Selenium</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="kicker">05 / Education</div><h2>Information Technology<br>foundation.</h2></div>
+        </div>
+        <div class="glass edu reveal">
+          <div>
+            <div class="degree">Bachelor of Technology — BTech, Information Technology</div>
+            <div class="school">CCS (Chaudhary Charan Singh) University</div>
+          </div>
+          <div class="years">Aug 2015 – Jul 2019</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container reveal">
+        <div class="kicker">06 / Contact</div>
+        <h2>Building something with AI, product or data?</h2>
+        <p>Feel free to connect. I enjoy building scalable AI products that solve complex problems and deliver meaningful value to users.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:anmolkumar434@gmail.com">Email me</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/anmolkrm1" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>© <span id="year"></span> Anmol Kumar</span>
+      <span>AI Product Manager · GenAI · LLMs · RAG</span>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, {threshold: .08});
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
