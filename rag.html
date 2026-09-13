@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAG Simulator | Learn Retrieval-Augmented Generation</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --surface:#fff; --surface2:#f1f3f8; --text:#171923;
+    --muted:#697386; --line:#e4e7ee; --accent:#635bff; --accent2:#8b5cf6;
+    --green:#16a34a; --amber:#d97706; --red:#dc2626; --shadow:0 12px 35px rgba(24,32,56,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+  button,input,textarea{font:inherit}
+  .app{min-height:100vh}
+  header{background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  .nav{max-width:1250px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+  .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:0 7px 18px rgba(99,91,255,.25)}
+  .brand span{font-size:17px}
+  .nav-note{font-size:13px;color:var(--muted)}
+  main{max-width:1250px;margin:auto;padding:38px 24px 60px}
+  .hero{display:grid;grid-template-columns:1.5fr .8fr;gap:24px;align-items:stretch;margin-bottom:28px}
+  .hero-card,.score-card,.panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+  .hero-card{padding:32px}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;color:var(--accent);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+  h1{font-size:42px;line-height:1.06;letter-spacing:-.04em;margin:0 0 13px}
+  .hero-card p{color:var(--muted);font-size:16px;line-height:1.65;max-width:750px;margin:0}
+  .score-card{padding:25px;display:flex;flex-direction:column;justify-content:center}
+  .score-label{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .score{font-size:44px;font-weight:850;letter-spacing:-.04em;margin:4px 0}
+  .score small{font-size:17px;color:var(--muted);font-weight:600}
+  .score-bar{height:9px;background:var(--surface2);border-radius:99px;overflow:hidden;margin:8px 0 12px}
+  .score-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:.5s}
+  .score-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+
+  .flow{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:28px}
+  .flow-step{min-height:74px;background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:12px 10px;position:relative}
+  .flow-step .num{font-size:10px;color:var(--accent);font-weight:800}
+  .flow-step strong{display:block;font-size:12px;margin-top:4px}
+  .flow-step span{display:block;font-size:10px;color:var(--muted);margin-top:3px}
+  .flow-step.active{border-color:rgba(99,91,255,.45);box-shadow:0 8px 22px rgba(99,91,255,.10);background:#fbfaff}
+
+  .workspace{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .panel{padding:24px}
+  .panel.full{grid-column:1/-1}
+  .panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:18px}
+  .panel-title{font-size:19px;font-weight:800;letter-spacing:-.02em}
+  .panel-sub{color:var(--muted);font-size:12px;margin-top:4px;line-height:1.5}
+  .badge{font-size:11px;font-weight:800;border-radius:99px;padding:7px 10px;background:#f0efff;color:var(--accent);white-space:nowrap}
+
+  label{display:block;font-size:12px;font-weight:800;margin:15px 0 7px}
+  textarea,input{width:100%;border:1px solid var(--line);background:#fafbfe;border-radius:13px;padding:13px 14px;outline:none;color:var(--text);transition:.2s}
+  textarea{min-height:115px;resize:vertical;line-height:1.5}
+  textarea:focus,input:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(99,91,255,.08)}
+  .btn-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+  button{border:0;border-radius:11px;padding:11px 15px;font-weight:800;cursor:pointer;transition:.18s}
+  button:hover{transform:translateY(-1px)}
+  .primary{background:var(--accent);color:#fff;box-shadow:0 7px 18px rgba(99,91,255,.22)}
+  .secondary{background:var(--surface2);color:var(--text)}
+  .ghost{background:transparent;border:1px solid var(--line)}
+
+  .doc-list{display:grid;gap:9px;max-height:285px;overflow:auto;padding-right:3px}
+  .doc{border:1px solid var(--line);border-radius:13px;padding:12px 13px;background:#fcfcfe;cursor:pointer}
+  .doc:hover{border-color:#cfd2df}
+  .doc.selected{border-color:var(--accent);background:#faf9ff}
+  .doc-top{display:flex;justify-content:space-between;gap:10px}
+  .doc-name{font-weight:800;font-size:13px}
+  .doc-id{font-size:10px;color:var(--muted)}
+  .doc p{margin:6px 0 0;font-size:11px;color:var(--muted);line-height:1.45}
+
+  .chunks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+  .chunk{border:1px solid var(--line);border-radius:13px;padding:12px;background:#fcfcfe;min-height:105px}
+  .chunk.highlight{border-color:var(--accent);background:#faf9ff}
+  .chunk-id{font-size:10px;color:var(--accent);font-weight:900}
+  .chunk p{font-size:11px;line-height:1.45;color:#525b6d;margin:7px 0 0}
+
+  .pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:12px}
+  .mini{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fcfcfe;min-height:120px}
+  .mini .icon{font-size:19px}
+  .mini strong{display:block;font-size:12px;margin:8px 0 5px}
+  .mini p{font-size:10px;line-height:1.45;color:var(--muted);margin:0}
+
+  .vector-box{background:#11131a;color:#d9dce6;border-radius:14px;padding:15px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.6;overflow:auto}
+  .vector-key{color:#a78bfa}.vector-num{color:#93c5fd}.vector-muted{color:#73798a}
+
+  .results{display:grid;gap:10px;margin-top:12px}
+  .result{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+  .result-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .rank{font-weight:900;font-size:12px}
+  .similarity{font-size:11px;font-weight:900;color:var(--green)}
+  .result p{font-size:12px;color:#555e70;line-height:1.5;margin:8px 0}
+  .score-pill{display:inline-block;font-size:10px;padding:5px 8px;border-radius:8px;background:#ecfdf3;color:var(--green);font-weight:800}
+
+  .prompt-box{background:#171923;color:#e8eaf0;border-radius:15px;padding:17px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.65;white-space:pre-wrap}
+  .prompt-box .sys{color:#c4b5fd}.prompt-box .ctx{color:#86efac}.prompt-box .query{color:#93c5fd}
+  .answer{border:1px solid #d8d2ff;background:#faf9ff;border-radius:15px;padding:18px;margin-top:12px}
+  .answer h3{margin:0 0 7px;font-size:14px}
+  .answer p{margin:0;color:#4d5567;line-height:1.6;font-size:13px}
+
+  .explain{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .concept{padding:15px;border-radius:14px;background:var(--surface2)}
+  .concept strong{font-size:12px}.concept p{font-size:11px;color:var(--muted);line-height:1.5;margin:6px 0 0}
+  .tip{margin-top:16px;border-left:3px solid var(--accent);padding:11px 13px;background:#faf9ff;border-radius:0 10px 10px 0;color:#525b6d;font-size:12px;line-height:1.55}
+  .hidden{display:none!important}
+  .status{font-size:11px;color:var(--muted);margin-top:9px}
+
+  @media(max-width:950px){
+    .hero,.workspace{grid-template-columns:1fr}
+    .flow{grid-template-columns:repeat(4,1fr)}
+    .chunks{grid-template-columns:1fr 1fr}.pipeline{grid-template-columns:1fr 1fr}
+    .explain{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    main{padding:22px 14px 45px}.nav{padding:14px}.nav-note{display:none}h1{font-size:32px}
+    .flow{grid-template-columns:1fr 1fr}.chunks,.pipeline,.explain{grid-template-columns:1fr}
+    .hero-card,.score-card,.panel{padding:19px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="nav">
+    <div class="brand"><div class="logo">R</div><span>RAG Simulator</span></div>
+    <div class="nav-note">Learn the pipeline by running it yourself</div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-card">
+      <div class="eyebrow">Interactive learning lab</div>
+      <h1>See how RAG works, step by step.</h1>
+      <p>Enter a small knowledge base and ask a question. The simulator walks through ingestion, chunking, embeddings, vector search, Top-K retrieval, reranking, prompt construction, and the final grounded answer.</p>
+    </div>
+    <div class="score-card">
+      <div class="score-label">Pipeline progress</div>
+      <div class="score"><span id="progressScore">0</span><small>/ 7 steps</small></div>
+      <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
+      <p id="progressText">Start by ingesting the sample knowledge base.</p>
+    </div>
+  </section>
+
+  <section class="flow" id="flow">
+    <div class="flow-step" data-step="1"><div class="num">01</div><strong>Ingestion</strong><span>Load documents</span></div>
+    <div class="flow-step" data-step="2"><div class="num">02</div><strong>Chunking</strong><span>Split text</span></div>
+    <div class="flow-step" data-step="3"><div class="num">03</div><strong>Embeddings</strong><span>Text → vectors</span></div>
+    <div class="flow-step" data-step="4"><div class="num">04</div><strong>Retrieval</strong><span>Vector search</span></div>
+    <div class="flow-step" data-step="5"><div class="num">05</div><strong>Reranking</strong><span>Improve relevance</span></div>
+    <div class="flow-step" data-step="6"><div class="num">06</div><strong>Prompt</strong><span>Add context</span></div>
+    <div class="flow-step" data-step="7"><div class="num">07</div><strong>LLM</strong><span>Generate answer</span></div>
+  </section>
+
+  <section class="workspace">
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">1. Knowledge base</div><div class="panel-sub">These are the documents your RAG system knows about.</div></div>
+        <div class="badge">DATA</div>
+      </div>
+      <div class="doc-list" id="docs"></div>
+      <div class="btn-row">
+        <button class="primary" id="ingestBtn">Run ingestion</button>
+        <button class="secondary" id="resetBtn">Reset</button>
+      </div>
+      <div class="status" id="ingestStatus">Not ingested yet.</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">2. Chunking</div><div class="panel-sub">A document is split into smaller pieces so retrieval can find precise information.</div></div>
+        <div class="badge">CHUNKS</div>
+      </div>
+      <div id="chunkArea" class="chunks">
+        <div class="chunk"><div class="chunk-id">WAITING</div><p>Run ingestion to create chunks.</p></div>
+      </div>
+      <div class="tip"><b>Why chunk?</b> Sending an entire document to the LLM can waste context. Smaller chunks make relevant retrieval more precise.</div>
+    </div>
+
+    <div class="panel full">
+      <div class="panel-head">
+        <div><div class="panel-title">3. Embeddings → Vector database</div><div class="panel-sub">Each chunk is represented by a numerical vector. This demo uses simplified vectors so you can see the concept without an external API.</div></div>
+        <div class="badge">VECTOR DB</div>
+      </div>
+      <div class="pipeline">
+        <div class="mini"><div class="icon">📄</div><strong>Chunk text</strong><p>A piece of the original document becomes the unit we want to retrieve.</p></div>
+        <div class="mini"><div class="icon">🧠</div><strong>Embedding model</strong><p>Maps the chunk into numbers that capture semantic meaning.</p></div>
+        <div class="mini"><div class="icon">🔢</div><strong>Vector</strong><p id="sampleVector">[ waiting for ingestion ]</p></div>
+        <div class="mini"><div class="icon">🗄️</div><strong>Vector database</strong><p>Stores vectors plus metadata such as document ID and chunk ID.</p></div>
+        <div class="mini"><div class="icon">🔎</div><strong>Similarity search</strong><p>Compares the query vector with stored vectors to find relevant chunks.</p></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">4. Ask a question</div><div class="panel-sub">The query is embedded directly. It is not normally chunked like a document.</div></div>
+        <div class="badge">QUERY</div>
+      </div>
+      <textarea id="query">What is the refund policy for damaged items?</textarea>
+      <label for="topK">Top-K documents to retrieve</label>
+      <input id="topK" type="range" min="2" max="5" value="4" oninput="document.getElementById('kValue').textContent=this.value">
+      <div class="status">K = <b id="kValue">4</b> chunks will be retrieved before reranking.</div>
+      <div class="btn-row"><button class="primary" id="retrieveBtn">Run retrieval</button></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">5. Retrieval + Top-K</div><div class="panel-sub">The query vector is compared with vectors in the database.</div></div>
+        <div class="badge">SEARCH</div>
+      </div>
+      <div class="vector-box" id="queryVector">query_vector = waiting...</div>
+      <div class="results" id="retrievalResults">
+        <div class="status">Run retrieval after ingestion.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">6. Reranking</div><div class="panel-sub">A reranker looks at the query and retrieved text together and produces a better relevance ordering.</div></div>
+        <div class="badge">RERANK</div>
+      </div>
+      <div id="rerankResults" class="results">
+        <div class="status">Waiting for Top-K results.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="panel-title">7. Prompt → LLM</div><div class="panel-sub">Relevant chunks are inserted into the prompt as context.</div></div>
+        <div class="badge">GENERATION</div>
+      </div>
+      <div class="prompt-box" id="promptBox">System:
+You are a helpful assistant. Answer using the supplied context. If the context does not contain the answer, say you do not know.
+
+Context:
+[ waiting for retrieved context ]
+
+User:
+[ waiting for question ]</div>
+      <div class="answer" id="answer">
+        <h3>LLM answer</h3>
+        <p>Run the full pipeline to generate a grounded answer.</p>
+      </div>
+    </div>
+
+    <div class="panel full">
+      <div class="panel-head">
+        <div><div class="panel-title">What each stage is actually doing</div><div class="panel-sub">Use this as your mental model when explaining RAG in an interview.</div></div>
+      </div>
+      <div class="explain">
+        <div class="concept"><strong>Chunking</strong><p>Break large documents into retrievable units. The goal is useful context, not arbitrary splitting.</p></div>
+        <div class="concept"><strong>Embedding</strong><p>Convert text into a numerical representation where semantically similar text tends to be close together.</p></div>
+        <div class="concept"><strong>Retrieval</strong><p>Embed the user query and search the vector database for the most similar chunks.</p></div>
+        <div class="concept"><strong>Reranking</strong><p>Re-score the retrieved candidates using a stronger relevance model before giving context to the LLM.</p></div>
+      </div>
+      <div class="tip"><b>Important distinction:</b> Vector search finds candidate chunks. Reranking improves their order. The LLM then uses the selected context to generate the response. Retrieval and generation are separate jobs.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const docs = [
+  {
+    id:"DOC-01", name:"Refund Policy", text:"Customers can request a refund for damaged or defective items within 7 days of delivery. A photo of the damaged item may be required. Approved refunds are processed to the original payment method."
+  },
+  {
+    id:"DOC-02", name:"Delivery Policy", text:"Standard deliveries usually arrive within the promised delivery window. Customers can track an active order from the orders page. Delivery timing can vary during peak demand."
+  },
+  {
+    id:"DOC-03", name:"Cancellation Policy", text:"Orders can be cancelled before the seller begins preparing the order. After preparation starts, cancellation may not be available. Eligible cancellations receive a refund according to the payment method."
+  },
+  {
+    id:"DOC-04", name:"Support Policy", text:"Customers can contact support from the help section. For an issue with a delivered item, include the order number and relevant photos when contacting support."
+  }
+];
+
+let chunks = [];
+let retrieved = [];
+let reranked = [];
+let completed = 0;
+
+function renderDocs(){
+  document.getElementById("docs").innerHTML = docs.map((d,i)=>`
+    <div class="doc ${i===0?'selected':''}" onclick="selectDoc(this)">
+      <div class="doc-top"><span class="doc-name">${d.name}</span><span class="doc-id">${d.id}</span></div>
+      <p>${d.text}</p>
+    </div>
+  `).join("");
+}
+function selectDoc(el){
+  document.querySelectorAll(".doc").forEach(x=>x.classList.remove("selected"));
+  el.classList.add("selected");
+}
+function hashVector(text){
+  const words = text.toLowerCase().match(/[a-z]+/g)||[];
+  const topics = ["refund","damaged","delivery","cancel","support","order","photo","payment","seller","track"];
+  return topics.map(t=>{
+    let n=0;
+    words.forEach(w=>{if(w===t)n+=1});
+    return Math.min(1, n/3);
+  });
+}
+function cosine(a,b){
+  let dot=0,aa=0,bb=0;
+  for(let i=0;i<a.length;i++){dot+=a[i]*b[i];aa+=a[i]*a[i];bb+=b[i]*b[i]}
+  return aa&&bb?dot/(Math.sqrt(aa)*Math.sqrt(bb)):0;
+}
+function tokenizeChunks(){
+  chunks=[];
+  docs.forEach(d=>{
+    const sentences=d.text.match(/[^.!?]+[.!?]+/g)||[d.text];
+    sentences.forEach((s,i)=>chunks.push({id:`${d.id}-C${i+1}`,doc:d.name,text:s.trim(),vector:hashVector(s)}));
+  });
+}
+function setStep(n){
+  completed=Math.max(completed,n);
+  document.querySelectorAll(".flow-step").forEach(el=>el.classList.toggle("active",+el.dataset.step<=completed));
+  document.getElementById("progressScore").textContent=completed;
+  document.getElementById("scoreFill").style.width=(completed/7*100)+"%";
+  const texts=[
+    "Start by ingesting the sample knowledge base.",
+    "Documents loaded. Next, create chunks.",
+    "Chunks created. Now inspect their embeddings.",
+    "Vectors stored. Ask a question to retrieve relevant chunks.",
+    "Candidates retrieved. Next, rerank them.",
+    "Best context selected. Build the prompt.",
+    "Prompt is ready. The LLM can answer using the context.",
+    "Pipeline complete. You just ran a RAG system."
+  ];
+  document.getElementById("progressText").textContent=texts[completed];
+}
+function ingest(){
+  tokenizeChunks();
+  document.getElementById("ingestStatus").textContent=`Ingested ${docs.length} documents → ${chunks.length} chunks → ${chunks.length} vectors stored.`;
+  document.getElementById("chunkArea").innerHTML=chunks.map(c=>`
+    <div class="chunk"><div class="chunk-id">${c.id}</div><p>${c.text}</p></div>
+  `).join("");
+  const v=chunks[0].vector.map(x=>x.toFixed(2));
+  document.getElementById("sampleVector").innerHTML=`[${v.map(x=>`<span class="vector-num">${x}</span>`).join(", ")}]<br><span class="vector-muted">simplified demo vector</span>`;
+  setStep(3);
+}
+function retrieve(){
+  if(!chunks.length){alert("Run ingestion first.");return}
+  const q=document.getElementById("query").value.trim();
+  if(!q){alert("Enter a question.");return}
+  const qv=hashVector(q);
+  document.getElementById("queryVector").innerHTML=`<span class="vector-key">query_vector</span> = [${qv.map(x=>`<span class="vector-num">${x.toFixed(2)}</span>`).join(", ")}]`;
+  const k=+document.getElementById("topK").value;
+  retrieved=chunks.map(c=>({...c,similarity:cosine(qv,c.vector)})).sort((a,b)=>b.similarity-a.similarity).slice(0,k);
+  document.getElementById("retrievalResults").innerHTML=retrieved.map((r,i)=>`
+    <div class="result">
+      <div class="result-top"><span class="rank">#${i+1} · ${r.id}</span><span class="similarity">${(r.similarity*100).toFixed(0)}% similarity</span></div>
+      <p>${r.text}</p>
+      <span class="score-pill">Vector similarity</span>
+    </div>
+  `).join("");
+  rerank();
+  setStep(4);
+}
+function rerank(){
+  const q=document.getElementById("query").value.toLowerCase();
+  const words=(q.match(/[a-z]+/g)||[]).filter(w=>w.length>3);
+  reranked=retrieved.map(r=>{
+    const text=r.text.toLowerCase();
+    let overlap=0;
+    words.forEach(w=>{if(text.includes(w))overlap++});
+    const rerankScore=Math.min(1,r.similarity*0.55 + Math.min(1,overlap/Math.max(1,words.length))*0.45);
+    return {...r,rerankScore};
+  }).sort((a,b)=>b.rerankScore-a.rerankScore);
+  document.getElementById("rerankResults").innerHTML=reranked.map((r,i)=>`
+    <div class="result">
+      <div class="result-top"><span class="rank">New rank #${i+1} · ${r.id}</span><span class="similarity">${(r.rerankScore*100).toFixed(0)}% relevance</span></div>
+      <p>${r.text}</p>
+      <span class="score-pill">Reranker score</span>
+    </div>
+  `).join("");
+  buildPrompt();
+  setStep(5);
+}
+function buildPrompt(){
+  const q=document.getElementById("query").value.trim();
+  const context=reranked.slice(0,3).map((r,i)=>`[Context ${i+1} | ${r.id}] ${r.text}`).join("\n");
+  document.getElementById("promptBox").innerHTML=
+`<span class="sys">System:</span>
+You are a helpful assistant. Answer using the supplied context.
+If the context does not contain the answer, say you do not know.
+
+<span class="ctx">Context:</span>
+${escapeHtml(context)}
+
+<span class="query">User:</span>
+${escapeHtml(q)}`;
+  const answer=generateAnswer(q,reranked);
+  document.getElementById("answer").innerHTML=`<h3>LLM answer</h3><p>${answer}</p>`;
+  setStep(7);
+}
+function generateAnswer(q,rs){
+  const best=rs[0]?.text||"";
+  const lower=q.toLowerCase();
+  if(lower.includes("refund") && lower.includes("damag")){
+    return "Customers can request a refund for damaged or defective items within 7 days of delivery. A photo of the damaged item may be required, and approved refunds are processed to the original payment method.";
+  }
+  if(lower.includes("cancel")){
+    return "Orders can be cancelled before the seller begins preparing the order. After preparation starts, cancellation may not be available. Eligible cancellations are refunded according to the payment method.";
+  }
+  if(lower.includes("deliver")){
+    return "Standard deliveries usually arrive within the promised delivery window. You can track an active order from the orders page, although timing can vary during peak demand.";
+  }
+  return `Based on the retrieved context: ${best}`;
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function reset(){
+  chunks=[];retrieved=[];reranked=[];completed=0;
+  document.getElementById("ingestStatus").textContent="Not ingested yet.";
+  document.getElementById("chunkArea").innerHTML='<div class="chunk"><div class="chunk-id">WAITING</div><p>Run ingestion to create chunks.</p></div>';
+  document.getElementById("sampleVector").textContent="[ waiting for ingestion ]";
+  document.getElementById("queryVector").textContent="query_vector = waiting...";
+  document.getElementById("retrievalResults").innerHTML='<div class="status">Run retrieval after ingestion.</div>';
+  document.getElementById("rerankResults").innerHTML='<div class="status">Waiting for Top-K results.</div>';
+  document.getElementById("promptBox").textContent=`System:
+You are a helpful assistant. Answer using the supplied context. If the context does not contain the answer, say you do not know.
+
+Context:
+[ waiting for retrieved context ]
+
+User:
+[ waiting for question ]`;
+  document.getElementById("answer").innerHTML="<h3>LLM answer</h3><p>Run the full pipeline to generate a grounded answer.</p>";
+  setStep(0);
+}
+document.getElementById("ingestBtn").onclick=ingest;
+document.getElementById("retrieveBtn").onclick=retrieve;
+document.getElementById("resetBtn").onclick=reset;
+renderDocs();
+</script>
+</body>
+</html>
